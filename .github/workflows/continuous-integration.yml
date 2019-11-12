@@ -76,7 +76,15 @@ jobs:
       # - test
       - types
     steps:
-      - run: npm ci
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - env:
+          CI: true
+        run: npm ci
       - name: semantic-release-publish
         uses: ridedott/semantic-release-action@development
         with:
