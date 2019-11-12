@@ -1,12 +1,9 @@
 import { setFailed } from '@actions/core';
 import * as semanticRelease from 'semantic-release';
 
-import defaultConfig from '../config';
+import * as defaultConfig from '../config';
 
 const main = async (): Promise<void> => {
-  // eslint-disable-next-line no-console
-  console.log('TCL: defaultConfig', defaultConfig);
-
   const options: semanticRelease.Options = {
     ci: false,
     ...defaultConfig,
@@ -14,6 +11,9 @@ const main = async (): Promise<void> => {
     debug: true,
     dryRun: true,
   };
+  // eslint-disable-next-line no-console
+  console.log('TCL: options', options);
+
   const result: semanticRelease.Result = await semanticRelease(options);
   // eslint-disable-next-line no-console
   console.log('TCL: result', result);
