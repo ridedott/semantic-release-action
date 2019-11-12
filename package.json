@@ -68,7 +68,7 @@
     "access": "restricted",
     "registry": "https://npm.pkg.github.com"
   },
-  "repository": "https://github.com/ridedott/dependabot-auto-merge-action",
+  "repository": "https://github.com/ridedott/semantic-release-action",
   "scripts": {
     "build": "run-s clean:dist build:dist",
     "build:dist": "ncc build src/index.ts --minify --source-map --v8-cache",

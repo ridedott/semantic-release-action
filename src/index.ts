@@ -3,6 +3,9 @@ import * as semanticRelease from 'semantic-release';
 
 import * as defaultConfig from '../config';
 
+// eslint-disable-next-line capitalized-comments
+// import {repositoryUrl} from '../package.json'
+
 const main = async (): Promise<void> => {
   const options: semanticRelease.Options = {
     ci: false,
@@ -10,6 +13,7 @@ const main = async (): Promise<void> => {
     branch: 'development',
     debug: true,
     dryRun: true,
+    repositoryUrl: 'https://github.com/ridedott/semantic-release-action',
   };
   // eslint-disable-next-line no-console
   console.log('TCL: options', options);
