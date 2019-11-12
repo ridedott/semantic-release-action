@@ -1,7 +1,7 @@
 import { setFailed } from '@actions/core';
 import * as semanticRelease from 'semantic-release';
 
-const defaultConfig = require('./config');
+const defaultConfig = require('../config');
 
 const main = async (): Promise<void> => {
   // eslint-disable-next-line no-console
@@ -11,7 +11,6 @@ const main = async (): Promise<void> => {
     branch: 'development',
     debug: true,
     dryRun: true,
-    repositoryUrl: 'https://github.com/me/my-package.git',
   });
   // eslint-disable-next-line no-console
   console.log('TCL: result', result);
