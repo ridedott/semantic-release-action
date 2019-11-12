@@ -9,8 +9,8 @@ yarn-error.log*
 .runtimeconfig.json
 
 # Cache files
-.cache
-*.cache
+# .cache
+# *.cache
 
 # Runtime environment supports npm an Yarn lockfiles. A decision was made to use
 # npm, therefore all other lock files are ignored.
