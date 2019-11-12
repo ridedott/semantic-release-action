@@ -1,21 +1,20 @@
-import { getInput, setFailed, warning } from '@actions/core';
-import { context, GitHub } from '@actions/github';
+import { setFailed } from '@actions/core';
+import * as semanticRelease from 'semantic-release';
 
-import { pushHandle } from './eventHandlers';
-
-const GITHUB_TOKEN = getInput('GITHUB_TOKEN');
-const octokit = new GitHub(GITHUB_TOKEN);
+const defaultConfig = require('./config');
 
 const main = async (): Promise<void> => {
-  switch (context.eventName) {
-    case 'push':
-      // eslint-disable-next-line no-console
-      console.log({ context });
-
-      return pushHandle(octokit);
-    default:
-      warning(`Unknown event ${context.eventName}, skipping.`);
-  }
+  // eslint-disable-next-line no-console
+  console.log('TCL: defaultConfig', defaultConfig);
+  const result = await semanticRelease({
+    ...defaultConfig,
+    branch: 'development',
+    debug: true,
+    dryRun: true,
+    repositoryUrl: 'https://github.com/me/my-package.git',
+  });
+  // eslint-disable-next-line no-console
+  console.log('TCL: result', result);
 };
 
 main().catch((error: Error): void => {

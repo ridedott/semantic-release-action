@@ -143,7 +143,7 @@ customTransform = (commit, context) => {
   return commit;
 };
 
-module.exports = {
+export default {
   releaseRules,
   parserOpts,
   writerOpts: { transform: customTransform },
