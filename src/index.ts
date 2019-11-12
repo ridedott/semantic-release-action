@@ -7,6 +7,7 @@ const main = async (): Promise<void> => {
   // eslint-disable-next-line no-console
   console.log('TCL: defaultConfig', defaultConfig);
   const result = await semanticRelease({
+    ci: false,
     ...defaultConfig,
     branch: 'development',
     debug: true,
