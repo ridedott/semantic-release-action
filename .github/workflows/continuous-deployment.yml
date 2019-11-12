@@ -51,6 +51,6 @@ jobs:
       #     npx semantic-release
 
       - name: auto-merge
-        uses: ridedott/semantic-release-action@master
+        uses: ridedott/semantic-release-action@development
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

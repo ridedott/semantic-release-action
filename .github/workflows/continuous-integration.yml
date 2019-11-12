@@ -77,7 +77,7 @@ jobs:
       - types
     steps:
       - name: semantic-release-publish
-        uses: ridedott/semantic-release-action@master
+        uses: ridedott/semantic-release-action@development
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRY_RUN: true
