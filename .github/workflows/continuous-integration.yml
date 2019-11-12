@@ -76,6 +76,7 @@ jobs:
       # - test
       - types
     steps:
+      - run: npm ci
       - name: semantic-release-publish
         uses: ridedott/semantic-release-action@development
         with:
