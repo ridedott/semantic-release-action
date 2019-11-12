@@ -13,7 +13,7 @@ const main = async (): Promise<void> => {
     dryRun: true,
   });
   // eslint-disable-next-line no-console
-  console.log('TCL: result', result);
+  console.log('TCL: result', { result });
 };
 
 main().catch((error: Error): void => {
