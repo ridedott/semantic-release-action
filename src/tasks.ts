@@ -14,7 +14,7 @@ export enum Commands {
 
 const runCommand = async (command: string): Promise<void> => {
   const { stdout, stderr } = await execPromisified(command);
-  info(`::::${stdout}`);
+  info(stdout);
 
   if (stderr.length > 0) {
     error(stderr);
