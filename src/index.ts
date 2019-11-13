@@ -11,10 +11,12 @@ const main = async (): Promise<void> => {
   await runTask(Commands.CreateGitIgnoreBackup);
 
   const result = await semanticRelease({
+    branch: 'development',
     ci: false,
     ...defaultConfiguration,
     ...handleBranchFlag(),
     ...handleDryRunFlag(),
+    dryRun: true,
   });
 
   await runTask(Commands.RemoveNpmrc);

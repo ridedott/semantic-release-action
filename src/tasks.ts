@@ -14,19 +14,18 @@ export enum Commands {
 
 const runCommand = async (command: string): Promise<void> => {
   const { stdout, stderr } = await execPromisified(command);
-
-  if (typeof stderr === 'string') {
-    return Promise.reject(stderr);
-  }
-
   debug(stdout);
+
+  if (stderr.length > 0) {
+    throw new Error(stderr);
+  }
 };
 
 export const reportResults = async (result: Result): Promise<void> => {
   if (result === false) {
     debug('No new release published.');
 
-    return Promise.resolve();
+    return;
   }
 
   const { nextRelease } = result;
@@ -46,5 +45,6 @@ export const runTask = async (task: Commands): Promise<void> => {
     case Commands.RemoveNpmrc:
       return runCommand('rm -rf .npmrc');
     default:
+      throw new Error(`task ${task} not found`);
   }
 };
