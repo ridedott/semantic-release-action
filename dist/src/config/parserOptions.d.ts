@@ -1,4 +1,4 @@
-export declare const parserOpts: {
+export declare const parserOptions: {
     mergeCorrespondence: string[];
     mergePattern: RegExp;
 };
