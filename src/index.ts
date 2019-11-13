@@ -8,8 +8,6 @@ import { handleBranchFlag, handleDryRunFlag } from './optionsHandlers';
 import { Commands, reportResults, runTask } from './tasks';
 
 const main = async (): Promise<void> => {
-  await runTask(Commands.CreateGitIgnoreBackup);
-
   const result = await semanticRelease({
     /* eslint-disable unicorn/prevent-abbreviations */
     ci: false,
