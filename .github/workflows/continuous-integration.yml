@@ -1,85 +1,173 @@
 name: Continuous Integration
 
-on: push
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
 
 jobs:
   format:
+    name: Format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run format
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Format
+        run: npm run format
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - env:
-          CI: true
-        run: npm ci
-      - run: npm run lint
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Lint
+        run: npm run lint
   spellcheck:
+    name: Spellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - env:
-          CI: true
-        run: npm ci
-      - run: npm run spellcheck
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Spellcheck
+        run: npm run spellcheck
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - env:
-          CI: true
-        run: npm ci
-      - run: npm test
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Test
+        run: npm run test:ci
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   types:
+    name: Types
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - env:
-          CI: true
-        run: npm ci
-      - run: npm run types
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Types
+        run: npm run types
   test-release:
     name: Test release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-      - env:
-          CI: true
-        run: npm ci
-      - name: semantic-release-publish
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          key:
+            npm-${{ hashFiles(format('{0}{1}', github.workspace,
+            '/package-lock.json')) }}
+          path: ~/.npm
+          restore-keys: |
+            npm-
+      - name: Install dependencies
+        run:
+          npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
+      - name: Test run
         uses: ridedott/semantic-release-action@development
         env:
           # This must be used as GitHub Actions token does not support pushing
