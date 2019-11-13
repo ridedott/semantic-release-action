@@ -4,13 +4,16 @@ import * as semanticRelease from 'semantic-release';
 import * as defaultConfiguration from '../config';
 
 const branch = getInput('BRANCH');
+
+// eslint-disable-next-line no-console
+console.log('TCL: branch', branch);
 const dryRun = getInput('DRY_RUN');
 
 const main = async (): Promise<void> => {
   const options: semanticRelease.Options = {
     ci: false,
     ...defaultConfiguration,
-    branch,
+    branch: typeof branch === 'string' ? branch : 'master',
     dryRun,
   };
   // eslint-disable-next-line no-console
