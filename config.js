@@ -1,60 +1,37 @@
-const plugins = {
-  plugins: [
-    [
-      '@semantic-release/commit-analyzer',
-      {
-        releaseRules: [
-          {
-            type: 'build',
-            release: 'patch',
-          },
-          {
-            type: 'ci',
-            release: 'patch',
-          },
-          {
-            type: 'chore',
-            release: 'patch',
-          },
-          {
-            type: 'docs',
-            release: 'patch',
-          },
-          {
-            type: 'refactor',
-            release: 'patch',
-          },
-          {
-            type: 'style',
-            release: 'patch',
-          },
-          {
-            type: 'test',
-            release: 'patch',
-          },
-        ],
-      },
-    ],
-    '@semantic-release/release-notes-generator',
-    '@semantic-release/changelog',
-    '@semantic-release/npm',
-    [
-      '@semantic-release/git',
-      {
-        assets: ['dist', 'package.json', 'package-lock.json', 'CHANGELOG.md'],
-        message: 'chore(release): ${nextRelease.version} [skip ci]',
-      },
-    ],
-    [
-      '@semantic-release/github',
-      {
-        failComment: false,
-        releasedLabels: false,
-        successComment: false,
-      },
-    ],
+const plugins = [
+  [
+    '@semantic-release/commit-analyzer',
+    {
+      releaseRules: [
+        { type: 'build', release: 'patch' },
+        { type: 'ci', release: 'patch' },
+        { type: 'chore', release: 'patch' },
+        { type: 'docs', release: 'patch' },
+        { type: 'refactor', release: 'patch' },
+        { type: 'style', release: 'patch' },
+        { type: 'test', release: 'patch' },
+      ],
+    },
   ],
-};
+  '@semantic-release/release-notes-generator',
+  '@semantic-release/changelog',
+  '@semantic-release/npm',
+  [
+    '@semantic-release/git',
+    {
+      assets: ['dist', 'package.json', 'package-lock.json', 'CHANGELOG.md'],
+      message: 'chore(release): ${nextRelease.version} [skip ci]',
+    },
+  ],
+  [
+    '@semantic-release/github',
+    {
+      failComment: false,
+      releasedLabels: false,
+      successComment: false,
+    },
+  ],
+];
 
 parserOpts = {
   mergePattern: /^Merge pull request #(\d+) from (.*)$/,
@@ -147,5 +124,5 @@ module.exports = {
   releaseRules,
   parserOpts,
   writerOpts: { transform: customTransform },
-  ...plugins,
+  plugins,
 };

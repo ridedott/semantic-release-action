@@ -1,18 +1,17 @@
-import { setFailed } from '@actions/core';
+import { getInput, setFailed } from '@actions/core';
 import * as semanticRelease from 'semantic-release';
 
-import * as defaultConfig from '../config';
+import * as defaultConfiguration from '../config';
 
-// eslint-disable-next-line capitalized-comments
-// import {repositoryUrl} from '../package.json'
+const branch = getInput('BRANCH');
+const dryRun = getInput('DRY_RUN');
 
 const main = async (): Promise<void> => {
   const options: semanticRelease.Options = {
     ci: false,
-    ...defaultConfig,
-    branch: 'development',
-    debug: true,
-    dryRun: true,
+    ...defaultConfiguration,
+    branch,
+    dryRun,
   };
   // eslint-disable-next-line no-console
   console.log('TCL: options', options);
