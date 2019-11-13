@@ -87,7 +87,10 @@ jobs:
         run: npm ci
       - name: semantic-release-publish
         uses: ridedott/semantic-release-action@development
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRY_RUN: true
           DEBUG: true
+          BRANCH: development

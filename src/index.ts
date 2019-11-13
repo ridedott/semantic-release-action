@@ -13,7 +13,6 @@ const main = async (): Promise<void> => {
     branch: 'development',
     debug: true,
     dryRun: true,
-    repositoryUrl: 'https://github.com/ridedott/semantic-release-action',
   };
   // eslint-disable-next-line no-console
   console.log('TCL: options', options);
