@@ -1,7 +1,5 @@
-export declare const handleBranchFlag: () => {} | {
-    branch: string;
-};
-export declare const handleDryRunFlag: () => {
-    dryRun: boolean;
-};
+/**
+ * Options Handler Exports
+ */
+export * from './handlers';
 //# sourceMappingURL=index.d.ts.map
