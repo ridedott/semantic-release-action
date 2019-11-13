@@ -54,6 +54,7 @@
   "license": "UNLICENSED",
   "lint-staged": {
     "*.ts": [
+      "eslint",
       "git add"
     ],
     "*.{json,md,ts,yml,yaml}": [
