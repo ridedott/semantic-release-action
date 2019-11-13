@@ -14,7 +14,7 @@ export enum Commands {
 
 const runCommand = async (command: string): Promise<void> => {
   const { stdout, stderr } = await execPromisified(command);
-  info(stdout);
+  info(`::::${stdout}`);
 
   if (stderr.length > 0) {
     error(stderr);
@@ -25,9 +25,6 @@ const runCommand = async (command: string): Promise<void> => {
 export const reportResults = async (result: Result): Promise<void> => {
   if (result === false) {
     info('No new release published.');
-
-    // eslint-disable-next-line no-console
-    console.log("TCL: 'No new release published.'");
 
     return;
   }
