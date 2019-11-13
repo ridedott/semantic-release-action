@@ -92,5 +92,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           DRY_RUN: true
-          DEBUG: true
-          # BRANCH: development
+          BRANCH: development
