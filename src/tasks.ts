@@ -1,6 +1,6 @@
 // cspell:ignore promisify promisified gitignore npmrc
 
-import { debug } from '@actions/core';
+import { error, info } from '@actions/core';
 import { exec } from 'child_process';
 import { Result } from 'semantic-release';
 import { promisify } from 'util';
@@ -14,16 +14,17 @@ export enum Commands {
 
 const runCommand = async (command: string): Promise<void> => {
   const { stdout, stderr } = await execPromisified(command);
-  debug(stdout);
+  info(stdout);
 
   if (stderr.length > 0) {
+    error(stderr);
     throw new Error(stderr);
   }
 };
 
 export const reportResults = async (result: Result): Promise<void> => {
   if (result === false) {
-    debug('No new release published.');
+    info('No new release published.');
 
     // eslint-disable-next-line no-console
     console.log("TCL: 'No new release published.'");
@@ -33,7 +34,7 @@ export const reportResults = async (result: Result): Promise<void> => {
 
   const { nextRelease } = result;
 
-  debug(
+  info(
     `
       Published release type: ${nextRelease.type}.
       Version:${nextRelease.version}.
