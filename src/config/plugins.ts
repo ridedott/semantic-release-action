@@ -1,3 +1,5 @@
+import { PluginSpec } from 'semantic-release';
+
 import { releaseRules } from './releaseRules';
 
 export const plugins = [
@@ -27,4 +29,4 @@ export const plugins = [
       successComment: false,
     },
   ],
-];
+] as PluginSpec[];

@@ -13,8 +13,8 @@ const main = async (): Promise<void> => {
     ci: false,
     ...handleBranchFlag(),
     ...handleDryRunFlag(),
-    ...plugins,
     parserOpts,
+    plugins,
     releaseRules,
     writerOpts: { transform },
     /* eslint-enable unicorn/prevent-abbreviations */
