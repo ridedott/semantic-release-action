@@ -16,7 +16,6 @@ const main = async (): Promise<void> => {
     ...defaultConfiguration,
     ...handleBranchFlag(),
     ...handleDryRunFlag(),
-    dryRun: true,
   });
 
   await runTask(Commands.RemoveNpmrc);

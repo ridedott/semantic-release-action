@@ -25,6 +25,9 @@ export const reportResults = async (result: Result): Promise<void> => {
   if (result === false) {
     debug('No new release published.');
 
+    // eslint-disable-next-line no-console
+    console.log("TCL: 'No new release published.'");
+
     return;
   }
 
