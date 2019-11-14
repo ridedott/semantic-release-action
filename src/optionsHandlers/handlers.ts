@@ -20,15 +20,7 @@ export const handleBranchFlag = (): { branch: string } | {} => {
 };
 
 export const handleDryRunFlag = (): { dryRun: boolean } => {
-  const dryRun: boolean = getInput(Flags.dryRun) === 'true';
+  const dryRunInput: boolean = getInput(Flags.dryRun) === 'true';
 
-  if (dryRun === true) {
-    return {
-      dryRun,
-    };
-  }
-
-  return {
-    dryRun: false,
-  };
+  return { dryRun: dryRunInput === true };
 };
