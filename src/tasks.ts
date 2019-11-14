@@ -5,7 +5,7 @@ import { exec } from 'child_process';
 import { Result } from 'semantic-release';
 import { promisify } from 'util';
 
-const execPromisified = promisify(exec);
+const execAsync = promisify(exec);
 
 export enum Commands {
   CreateGitIgnoreBackup = 'createGitIgnoreBackup',
@@ -13,7 +13,7 @@ export enum Commands {
 }
 
 const runCommand = async (command: string): Promise<void> => {
-  const { stdout, stderr } = await execPromisified(command);
+  const { stdout, stderr } = await execAsync(command);
   info(stdout);
 
   if (stderr.length > 0) {
