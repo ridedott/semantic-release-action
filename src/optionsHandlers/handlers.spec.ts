@@ -8,7 +8,7 @@ afterEach((): void => {
   jest.clearAllMocks();
 });
 
-describe('handlers:', (): void => {
+describe('handlers', (): void => {
   it.each([
     { branch: 'develop', expected: { branch: 'develop' } },
     { branch: 'master', expected: { branch: 'master' } },
