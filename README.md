@@ -67,6 +67,17 @@ That's it! You can now go to the next step.
 
 ## Tests
 
+All tests are being executed using [Jest](https://jestjs.io/). All tests files
+live side-to-side with a source code and have a common suffix: `.spec.ts`.
+
+There are three helper scripts to run tests in the most common scenarios:
+
+```
+npm run test
+npm run test:watch
+npm run test:coverage
+```
+
 ### Formatting
 
 This project uses [Prettier](https://prettier.io) to automate formatting. All
