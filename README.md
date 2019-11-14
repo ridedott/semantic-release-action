@@ -23,10 +23,10 @@ Add a workflow file to your repository to create custom automated processes.
 
 ### Inputs
 
-- BRANCH: [Optional] Boolean value expected. Dry-run skips `prepare`, `publish`
+- BRANCH: [Optional] Boolean value expected. Git branch to release from. If not
+  provided master branch will be used for release.
+- DRY_RUN: [Optional] String value expected. Dry-run skips `prepare`, `publish`
   and `success` steps. If not provided defaults to false.
-- DRY_RUN: [Optional] String value expected. Git branch to release from. If not
-  provided master branch will be used for release..
 
 ## Getting Started
 
