@@ -15,6 +15,10 @@ Add
 [required secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners#creating-and-using-secrets-encrypted-variables)
 in your repository (settings -> secrets).
 
+Personal `GITHUB_TOKEN_WORKAROUND` token (scopes enabled: `read:packages`,
+`repo`, `write:packages`) is used as `GITHUB_TOKEN` because GitHub Actions token
+does not support pushing to protected branches.
+
 Add a workflow file to your repository to create custom automated processes.
 
 ### Inputs
