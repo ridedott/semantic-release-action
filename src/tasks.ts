@@ -32,7 +32,7 @@ export const reportResults = async (result: Result): Promise<void> => {
   logInfo(
     `
       Published release type: ${nextRelease.type}.
-      Version:${nextRelease.version}.
+      Version: ${nextRelease.version}.
     `,
   );
 };
