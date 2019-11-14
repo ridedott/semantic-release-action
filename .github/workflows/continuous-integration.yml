@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - master
-      - oleg-koval/fix-format
   push:
     branches:
       - master
-      - oleg-koval/fix-format
 
 jobs:
   format:
@@ -175,7 +173,7 @@ jobs:
           mv tsconfig.production.json tsconfig.json
           npm run build
       - name: Test run
-        uses: ridedott/semantic-release-action@oleg-koval/fix-format
+        uses: ridedott/semantic-release-action@master
         env:
           # This must be used as GitHub Actions token does not support pushing
           # to protected branches.
@@ -183,4 +181,3 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           DRY_RUN: true
-          BRANCH: oleg-koval/fix-format
