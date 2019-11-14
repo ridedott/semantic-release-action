@@ -1,5 +1,3 @@
-// cspell:ignore promisify promisified gitignore npmrc
-
 import { error, info } from '@actions/core';
 import { exec } from 'child_process';
 import { Result } from 'semantic-release';
