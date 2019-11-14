@@ -37,7 +37,7 @@ jobs:
         run: |
           printenv
           # cat ${HOME}/CHANGELOG.md
-          ls ${HOME}
+          cd ${HOME} && tree -d
       - name: Format
         run: npm run format
   lint:
