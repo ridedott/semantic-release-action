@@ -72,7 +72,7 @@ live side-to-side with a source code and have a common suffix: `.spec.ts`.
 
 There are three helper scripts to run tests in the most common scenarios:
 
-```
+```shell
 npm run test
 npm run test:watch
 npm run test:coverage
