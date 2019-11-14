@@ -30,8 +30,6 @@ These instructions will get you a copy of the project up and running on your
 local machine for development and testing purposes. See usage notes on how to
 consume this package in your project.
 
-<!-- Instructions -->
-
 ### Prerequisites
 
 Minimal requirements to set up the project:
