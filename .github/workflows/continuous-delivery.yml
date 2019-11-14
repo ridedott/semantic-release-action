@@ -30,6 +30,8 @@ jobs:
           restore-keys: |
             npm-
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
       - name: Build

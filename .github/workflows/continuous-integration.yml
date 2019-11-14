@@ -165,6 +165,8 @@ jobs:
           restore-keys: |
             npm-
       - name: Install dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
       - name: Build
@@ -173,7 +175,7 @@ jobs:
           mv tsconfig.production.json tsconfig.json
           npm run build
       - name: Test run
-        uses: ridedott/semantic-release-action@development
+        uses: ridedott/semantic-release-action@master
         env:
           # This must be used as GitHub Actions token does not support pushing
           # to protected branches.
