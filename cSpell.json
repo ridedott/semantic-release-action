@@ -36,6 +36,7 @@
     "octokit",
     "prettierignore",
     "prettierrc",
+    "printenv",
     "promisified",
     "promisify",
     "releaserc",
