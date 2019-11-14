@@ -112,10 +112,6 @@ Each commit to the master branch is automatically tagged using
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Built with
-
-### Runtime libraries
-
 ### Automation
 
 - [Dependabot](https://dependabot.com/)
