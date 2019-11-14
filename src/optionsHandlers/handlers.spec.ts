@@ -2,11 +2,19 @@ import * as core from '@actions/core';
 
 import { Flags, handleBranchFlag, handleDryRunFlag } from './handlers';
 
+/*
+ * Setup and teardown
+ */
+
 const getInputSpy = jest.spyOn(core, 'getInput');
 
 afterEach((): void => {
   jest.clearAllMocks();
 });
+
+/*
+ * Tests
+ */
 
 describe('handlers', (): void => {
   it.each([
