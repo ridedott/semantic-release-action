@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - master
-      - development
   push:
     branches:
       - master
-      - development
 
 jobs:
   format:
@@ -183,4 +181,3 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           DRY_RUN: true
-          BRANCH: development
