@@ -11,7 +11,10 @@ export const plugins = [
   ],
   '@semantic-release/release-notes-generator',
   '@semantic-release/changelog',
-  ['@semantic-release/exec', { cmd: 'npx prettier --write CHANGELOG.md' }],
+  [
+    '@semantic-release/exec',
+    { cmd: 'npx prettier --write ../../CHANGELOG.md' },
+  ],
   '@semantic-release/npm',
   [
     '@semantic-release/git',
