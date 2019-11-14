@@ -8,11 +8,11 @@ inputs:
   DRY_RUN:
     description:
       'Boolean value expected. Dry-run skips `prepare`, `publish` and `success`
-      steps. If not provided defaults to false'
+      steps. If not provided, defaults to false.'
   BRANCH:
     description:
-      'String value expected. Git branch to release from. If not provided master
-      branch will be used for release.'
+      'String value expected. Git branch to release from. If not provided,
+      master branch will be used for release.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
