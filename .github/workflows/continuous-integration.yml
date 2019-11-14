@@ -36,7 +36,8 @@ jobs:
       - name: Debug
         run: |
           printenv
-          cat ${HOME}/CHANGELOG.md
+          # cat ${HOME}/CHANGELOG.md
+          ls ${HOME}
       - name: Format
         run: npm run format
   lint:
