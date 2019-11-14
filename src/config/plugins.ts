@@ -1,3 +1,4 @@
+import { env } from 'process';
 import { PluginSpec } from 'semantic-release';
 
 import { releaseRules } from './releaseRules';
@@ -13,7 +14,8 @@ export const plugins = [
   '@semantic-release/changelog',
   [
     '@semantic-release/exec',
-    { cmd: 'npx prettier --write ../../CHANGELOG.md' },
+    { cmd: `npx prettier --write ${env.CHANGELOG_PATH}` },
+    // { cmd: 'npx prettier --write ../../CHANGELOG.md' },
   ],
   '@semantic-release/npm',
   [
