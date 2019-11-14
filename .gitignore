@@ -13,6 +13,10 @@ yarn-error.log*
 pnpm-lock.yaml
 yarn.lock
 
+# Cache files
+.cache
+*.cache
+
 # Runtime data
 pids
 *.pid
@@ -42,3 +46,4 @@ coverage
 
 # Build output
 lib
+dist
