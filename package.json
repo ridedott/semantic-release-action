@@ -61,7 +61,7 @@
     ]
   },
   "main": "dist/index.js",
-  "name": "@ridedott/dependabot-auto-merge-action",
+  "name": "@ridedott/semantic-release-action",
   "private": false,
   "publishConfig": {
     "access": "restricted",
