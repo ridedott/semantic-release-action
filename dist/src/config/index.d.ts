@@ -1,6 +1,6 @@
-import { parserOptions as parserOpts } from './parserOptions';
+import { parserOptions } from './parserOptions';
 import { plugins } from './plugins';
 import { releaseRules } from './releaseRules';
 import { transform } from './transform';
-export { parserOpts, plugins, releaseRules, transform };
+export { parserOptions, plugins, releaseRules, transform };
 //# sourceMappingURL=index.d.ts.map
