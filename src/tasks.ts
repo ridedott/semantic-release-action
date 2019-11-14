@@ -1,4 +1,4 @@
-import { error, info } from '@actions/core';
+import { error as logError, info as logInfo } from '@actions/core';
 import { exec } from 'child_process';
 import { Result } from 'semantic-release';
 import { promisify } from 'util';
@@ -12,24 +12,24 @@ export enum Commands {
 
 const runCommand = async (command: string): Promise<void> => {
   const { stdout, stderr } = await execAsync(command);
-  info(stdout);
+  logInfo(stdout);
 
   if (stderr.length > 0) {
-    error(stderr);
+    logError(stderr);
     throw new Error(stderr);
   }
 };
 
 export const reportResults = async (result: Result): Promise<void> => {
   if (result === false) {
-    info('No new release published.');
+    logInfo('No new release published.');
 
     return;
   }
 
   const { nextRelease } = result;
 
-  info(
+  logInfo(
     `
       Published release type: ${nextRelease.type}.
       Version:${nextRelease.version}.
