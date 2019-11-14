@@ -35,7 +35,7 @@ jobs:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
       - name: Debug
         run: |
-          cd ${HOME}/work/semantic-release-action && ls -lah
+          cd ${HOME}/work/semantic-release-action/semantic-release-action && ls -lah
       - name: Format
         run: npm run format
   lint:
