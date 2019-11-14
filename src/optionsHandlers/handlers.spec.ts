@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 
-import { flags, handleBranchFlag, handleDryRunFlag } from './handlers';
+import { Flags, handleBranchFlag, handleDryRunFlag } from './handlers';
 
 const getInputSpy = jest.spyOn(core, 'getInput');
 
@@ -21,7 +21,7 @@ describe('handlers:', (): void => {
       getInputSpy.mockImplementationOnce((): string => input.branch);
 
       expect(handleBranchFlag()).toMatchObject(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(flags.branch);
+      expect(getInputSpy).toHaveBeenCalledWith(Flags.branch);
     },
   );
 
@@ -37,7 +37,7 @@ describe('handlers:', (): void => {
       getInputSpy.mockImplementationOnce((): string => input.dryRun);
 
       expect(handleDryRunFlag()).toMatchObject(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(flags.dryRun);
+      expect(getInputSpy).toHaveBeenCalledWith(Flags.dryRun);
     },
   );
 });

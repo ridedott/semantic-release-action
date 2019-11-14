@@ -1,6 +1,6 @@
 import { getInput } from '@actions/core';
 
-export enum flags {
+export enum Flags {
   branch = 'BRANCH',
   dryRun = 'DRY_RUN',
   plugins = 'PLUGINS',
@@ -8,7 +8,7 @@ export enum flags {
 }
 
 export const handleBranchFlag = (): { branch: string } | {} => {
-  const branch: string = getInput(flags.branch);
+  const branch: string = getInput(Flags.branch);
 
   if (branch.length > 0) {
     return {
@@ -20,7 +20,7 @@ export const handleBranchFlag = (): { branch: string } | {} => {
 };
 
 export const handleDryRunFlag = (): { dryRun: boolean } => {
-  const dryRun: boolean = getInput(flags.dryRun) === 'true';
+  const dryRun: boolean = getInput(Flags.dryRun) === 'true';
 
   if (dryRun === true) {
     return {

@@ -1,4 +1,4 @@
-export declare enum flags {
+export declare enum Flags {
     branch = "BRANCH",
     dryRun = "DRY_RUN",
     plugins = "PLUGINS",
