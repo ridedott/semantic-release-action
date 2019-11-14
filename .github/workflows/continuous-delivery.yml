@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
       - name: Setup Node.js with GitHub Package Registry
         uses: actions/setup-node@v1
         with:
@@ -21,7 +20,6 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: 'ridedott'
           always-auth: true
-
       - name: Cache dependencies
         uses: actions/cache@v1
         with:
@@ -31,17 +29,14 @@ jobs:
           path: ~/.npm
           restore-keys: |
             npm-
-
       - name: Install dependencies
         run:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
-
       - name: Build
         run: |
           # Workaround https://github.com/zeit/ncc/issues/457.
           mv tsconfig.production.json tsconfig.json
           npm run build
-
       - name: Release
         uses: ridedott/semantic-release-action@master
         env:
