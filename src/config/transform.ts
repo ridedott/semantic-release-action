@@ -1,7 +1,7 @@
 // cspell:ignore eslintignore
 
 /**
- * This transform functions is a modified copy of
+ * This transform function is a modified copy of
  * angular preset for https://github.com/semantic-release/commit-analyzer
  * to support release notes & changelog entries generation for all types of commit messages:
  * https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular
