@@ -35,7 +35,7 @@ jobs:
           npm ci --ignore-scripts --no-audit --prefer-offline --progress=false
       - name: Debug
         run: |
-          cat ${HOME}/work/semantic-release-action/CHANGELOG.md
+          ls ${HOME}/work/semantic-release-action
       - name: Format
         run: npm run format
   lint:
