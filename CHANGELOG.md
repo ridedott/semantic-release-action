@@ -1,9 +1,30 @@
-## [1.0.3](https://github.com/ridedott/semantic-release-action/compare/v1.0.2...v1.0.3) (2019-11-15)
+## [1.0.6](https://github.com/ridedott/semantic-release-action/compare/v1.0.5...v1.0.6) (2019-11-15)
 
+### Continuous Integration
+
+- use master branch version of the action
+  ([2ec4bd7](https://github.com/ridedott/semantic-release-action/commit/2ec4bd7e1b634a0bf6bfc92d57457f8bcf5ca3b8))
+
+## [1.0.5](https://github.com/ridedott/semantic-release-action/compare/v1.0.4...v1.0.5) (2019-11-15)
+
+### Continuous Integration
+
+- add missing skip-ci flag, add node auth token
+  ([4168762](https://github.com/ridedott/semantic-release-action/commit/4168762ed45b5b27aa5fea264ece84d3dc19e23d))
+
+## [1.0.4](https://github.com/ridedott/semantic-release-action/compare/v1.0.3...v1.0.4) (2019-11-15)
 
 ### Chores
 
-* debug semantic release ([8474861](https://github.com/ridedott/semantic-release-action/commit/84748611f104ca5b30cf302992d62e859cbf5cde))
+- **deps:** bump @semantic-release/release-notes-generator
+  ([1bc8b95](https://github.com/ridedott/semantic-release-action/commit/1bc8b9501ec5f133f7dc4ea7d8738de782159571))
+
+## [1.0.3](https://github.com/ridedott/semantic-release-action/compare/v1.0.2...v1.0.3) (2019-11-15)
+
+### Chores
+
+- debug semantic release
+  ([8474861](https://github.com/ridedott/semantic-release-action/commit/84748611f104ca5b30cf302992d62e859cbf5cde))
 
 ## [1.0.2](https://github.com/ridedott/semantic-release-action/compare/v1.0.1...v1.0.2) (2019-11-14)
 
