@@ -73,7 +73,7 @@
   },
   "scripts": {
     "build": "run-s clean:dist build:dist",
-    "build:dist": "ncc build src/index.ts --minify --source-map --v8-cache --external @semantic-release/changelog --external @semantic-release/commit-analyzer --external @semantic-release/exec --external @semantic-release/git --external @semantic-release/npm --external @semantic-release/release-notes-generator",
+    "build:dist": "./scripts/build.sh",
     "build:ts": "tsc --project tsconfig.production.json",
     "build:ts:watch": "tsc --project tsconfig.production.json --watch",
     "clean": "run-p clean:*",
