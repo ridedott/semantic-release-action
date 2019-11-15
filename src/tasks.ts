@@ -6,8 +6,8 @@ import { promisify } from 'util';
 const execAsync = promisify(exec);
 
 export enum Commands {
-  CreateGitIgnoreBackup = 'createGitIgnoreBackup',
   RemoveNpmrc = 'removeNpmrc',
+  PreInstallPlugins = 'preInstallPlugins',
 }
 
 const runCommand = async (command: string): Promise<void> => {
@@ -40,10 +40,10 @@ export const reportResults = async (result: Result): Promise<void> => {
 
 export const runTask = async (task: Commands): Promise<void> => {
   switch (task) {
-    case Commands.CreateGitIgnoreBackup:
-      return runCommand("sed -i.bak -e '/dist/d' .gitignore");
     case Commands.RemoveNpmrc:
       return runCommand('rm -rf .npmrc');
+    case Commands.PreInstallPlugins:
+      return runCommand('./scripts/pre-install-plugins.sh');
     default:
       throw new Error(`task ${task} not found`);
   }
