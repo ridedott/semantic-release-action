@@ -42,16 +42,15 @@ export const runTask = async (task: Commands): Promise<void> => {
   switch (task) {
     case Commands.RemoveNpmrc:
       /**
-       * Remove .npmrc file from the repository during release where
-       * @ridedott/semantic-release-action action is used.
+       * Remove .npmrc file from the repository during release where this action
+       * is used.
        */
 
-      return runCommand('rm -rf .npmrc');
+      return runCommand('rm -r .npmrc');
     case Commands.PreInstallPlugins:
       /**
-       * Install semantic-release and semantic-release
-       * plugins inside of the repository during release where
-       * @ridedott/semantic-release-action action is used.
+       * Install semantic-release and semantic-release plugins inside of
+       * the repository during release where this action is used.
        */
 
       return runCommand(`npm install \
