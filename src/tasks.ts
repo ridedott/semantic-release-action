@@ -41,9 +41,27 @@ export const reportResults = async (result: Result): Promise<void> => {
 export const runTask = async (task: Commands): Promise<void> => {
   switch (task) {
     case Commands.RemoveNpmrc:
+      /**
+       * Remove .npmrc file from the repository during release where
+       * @ridedott/semantic-release-action action is used.
+       */
+
       return runCommand('rm -rf .npmrc');
     case Commands.PreInstallPlugins:
-      return runCommand('./scripts/pre-install-plugins.sh');
+      /**
+       * Install semantic-release and semantic-release
+       * plugins inside of the repository during release where
+       * @ridedott/semantic-release-action action is used.
+       */
+
+      return runCommand(`npm install \
+        semantic-release \
+        @semantic-release/changelog \
+        @semantic-release/commit-analyzer \
+        @semantic-release/exec \
+        @semantic-release/git \
+        @semantic-release/npm \
+        @semantic-release/release-notes-generator`);
     default:
       throw new Error(`task ${task} not found`);
   }
