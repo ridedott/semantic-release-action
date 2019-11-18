@@ -13,7 +13,7 @@ export const plugins = [
   '@semantic-release/changelog',
   [
     '@semantic-release/exec',
-    { prepareCmd: `npx prettier --write "**/*.{md}"` },
+    { prepareCmd: 'npx prettier --write CHANGELOG.md' },
   ],
   '@semantic-release/npm',
   [
