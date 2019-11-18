@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import { exists } from 'path';
 
 import {
   Flags,
@@ -75,12 +76,12 @@ describe('handlers', (): void => {
     { expected: './scripts/script.sh', scriptPath: './scripts/script.sh' },
   ])(
     'it should return proper scriptPath flag object',
-    (input: { scriptPath: string; expected: string }): void => {
+    async (input: { scriptPath: string; expected: string }): Promise<void> => {
       expect.assertions(2);
 
       getInputSpy.mockImplementationOnce((): string => input.scriptPath);
 
-      expect(handleScriptPathFlag()).toBe(input.expected);
+      expect(await handleScriptPathFlag()).resolves.toBe(input.expected);
       expect(getInputSpy).toHaveBeenCalledWith(Flags.scriptPath);
     },
   );

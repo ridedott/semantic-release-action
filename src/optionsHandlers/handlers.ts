@@ -29,7 +29,7 @@ export const handleDryRunFlag = (): { dryRun: boolean } => {
 
 export const handleDebugFlag = (): boolean => getInput(Flags.debug) === 'true';
 
-export const handleScriptPathFlag = (): string => {
+export const handleScriptPathFlag = async (): Promise<string> => {
   const scriptPathInput: string = getInput(Flags.scriptPath);
 
   return scriptPathInput;
