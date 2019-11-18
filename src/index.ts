@@ -3,11 +3,17 @@
 import { setFailed } from '@actions/core';
 import * as semanticRelease from 'semantic-release';
 
-import { parserOptions, plugins, releaseRules, transform } from './config';
+import {
+  generatePlugins,
+  parserOptions,
+  releaseRules,
+  transform,
+} from './config';
 import {
   handleBranchFlag,
   handleDebugFlag,
   handleDryRunFlag,
+  handleScriptPathFlag,
 } from './optionsHandlers';
 import { Commands, reportResults, runTask } from './tasks';
 
@@ -27,7 +33,9 @@ const main = async (): Promise<void> => {
     ...handleBranchFlag(),
     ...handleDryRunFlag(),
     parserOpts: parserOptions,
-    plugins,
+    plugins: generatePlugins({
+      command: handleScriptPathFlag(),
+    }),
     releaseRules,
     writerOpts: { transform },
     /* eslint-enable unicorn/prevent-abbreviations */

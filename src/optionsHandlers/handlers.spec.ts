@@ -5,6 +5,7 @@ import {
   handleBranchFlag,
   handleDebugFlag,
   handleDryRunFlag,
+  handleScriptPathFlag,
 } from './handlers';
 
 /*
@@ -67,6 +68,20 @@ describe('handlers', (): void => {
 
       expect(handleDebugFlag()).toBe(input.expected);
       expect(getInputSpy).toHaveBeenCalledWith(Flags.debug);
+    },
+  );
+
+  it.each([
+    { expected: './scripts/script.sh', scriptPath: './scripts/script.sh' },
+  ])(
+    'it should return proper scriptPath flag object',
+    (input: { scriptPath: string; expected: string }): void => {
+      expect.assertions(2);
+
+      getInputSpy.mockImplementationOnce((): string => input.scriptPath);
+
+      expect(handleScriptPathFlag()).toBe(input.expected);
+      expect(getInputSpy).toHaveBeenCalledWith(Flags.scriptPath);
     },
   );
 });
