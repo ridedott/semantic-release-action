@@ -46,7 +46,7 @@ export const runTask = async (task: Commands): Promise<void> => {
        * is used.
        */
 
-      return runCommand('rm -r .npmrc');
+      return runCommand('rm -f .npmrc');
     case Commands.PreInstallPlugins:
       /**
        * Install semantic-release and semantic-release plugins inside of
