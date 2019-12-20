@@ -54,6 +54,7 @@ export const runTask = async (task: Commands): Promise<void> => {
        */
 
       return runCommand(`npm install \
+        --no-save \
         semantic-release \
         @semantic-release/changelog \
         @semantic-release/commit-analyzer \

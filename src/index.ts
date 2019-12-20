@@ -1,5 +1,3 @@
-// cspell:ignore gitignore npmrc
-
 import { setFailed } from '@actions/core';
 import * as semanticRelease from 'semantic-release';
 
@@ -34,7 +32,7 @@ const main = async (): Promise<void> => {
     ...handleDryRunFlag(),
     parserOpts: parserOptions,
     plugins: generatePlugins({
-      command: handleScriptPathFlag(),
+      command: await handleScriptPathFlag(),
     }),
     releaseRules,
     writerOpts: { transform },

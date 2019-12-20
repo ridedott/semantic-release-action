@@ -1,19 +1,13 @@
 import * as core from '@actions/core';
-import { exists } from 'path';
 
-import {
-  Flags,
-  handleBranchFlag,
-  handleDebugFlag,
-  handleDryRunFlag,
-  handleScriptPathFlag,
-} from './handlers';
+import * as handlers from './handlers';
 
 /*
  * Setup and teardown
  */
 
 const getInputSpy = jest.spyOn(core, 'getInput');
+const fileExistsAsyncSpy = jest.spyOn(handlers, 'existsAsync');
 
 afterEach((): void => {
   jest.clearAllMocks();
@@ -29,14 +23,14 @@ describe('handlers', (): void => {
     { branch: 'master', expected: { branch: 'master' } },
     { branch: '', expected: {} },
   ])(
-    'it should return proper branch flag object',
+    'returns a proper branch flag object',
     (input: { branch: string; expected: { branch?: string } }): void => {
       expect.assertions(2);
 
       getInputSpy.mockImplementationOnce((): string => input.branch);
 
-      expect(handleBranchFlag()).toMatchObject(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(Flags.branch);
+      expect(handlers.handleBranchFlag()).toMatchObject(input.expected);
+      expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.branch);
     },
   );
 
@@ -45,14 +39,14 @@ describe('handlers', (): void => {
     { dryRun: 'false', expected: { dryRun: false } },
     { dryRun: '', expected: { dryRun: false } },
   ])(
-    'it should return proper dryRun flag object',
+    'returns a proper dryRun flag object',
     (input: { dryRun: string; expected: { dryRun: boolean } }): void => {
       expect.assertions(2);
 
       getInputSpy.mockImplementationOnce((): string => input.dryRun);
 
-      expect(handleDryRunFlag()).toMatchObject(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(Flags.dryRun);
+      expect(handlers.handleDryRunFlag()).toMatchObject(input.expected);
+      expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.dryRun);
     },
   );
 
@@ -61,28 +55,44 @@ describe('handlers', (): void => {
     { debug: 'false', expected: false },
     { debug: '', expected: false },
   ])(
-    'it should return proper debug flag object',
+    'returns a proper debug flag object',
     (input: { debug: string; expected: boolean }): void => {
       expect.assertions(2);
 
       getInputSpy.mockImplementationOnce((): string => input.debug);
 
-      expect(handleDebugFlag()).toBe(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(Flags.debug);
+      expect(handlers.handleDebugFlag()).toBe(input.expected);
+      expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.debug);
     },
   );
 
-  it.each([
-    { expected: './scripts/script.sh', scriptPath: './scripts/script.sh' },
-  ])(
-    'it should return proper scriptPath flag object',
-    async (input: { scriptPath: string; expected: string }): Promise<void> => {
-      expect.assertions(2);
+  it('returns a path if it exists', async (): Promise<void> => {
+    expect.assertions(3);
 
-      getInputSpy.mockImplementationOnce((): string => input.scriptPath);
+    const fakePath = './scripts/test.sh';
+    getInputSpy.mockImplementationOnce((): string => fakePath);
+    fileExistsAsyncSpy.mockResolvedValue(true);
 
-      expect(await handleScriptPathFlag()).resolves.toBe(input.expected);
-      expect(getInputSpy).toHaveBeenCalledWith(Flags.scriptPath);
-    },
-  );
+    const script = await handlers.handleScriptPathFlag();
+
+    expect(script).toStrictEqual(fakePath);
+    expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.scriptPath);
+    expect(fileExistsAsyncSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('throws an error if path is wrong', async (): Promise<void> => {
+    expect.assertions(3);
+
+    const fakePath = './scripts/test.sh';
+    getInputSpy.mockImplementationOnce((): string => fakePath);
+    fileExistsAsyncSpy.mockResolvedValue(false);
+
+    try {
+      await handlers.handleScriptPathFlag();
+    } catch (error) {
+      expect(error).toMatchInlineSnapshot(`[Error: Path not exists]`);
+    }
+    expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.scriptPath);
+    expect(fileExistsAsyncSpy).toHaveBeenCalledTimes(1);
+  });
 });

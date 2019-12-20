@@ -9,11 +9,10 @@ overrides:
       - src/**/*.spec.ts
     rules:
       '@typescript-eslint/no-magic-numbers': off
-      max-lines-per-function: off
       '@typescript-eslint/no-explicit-any': off
       '@typescript-eslint/no-non-null-assertion': off
-      max-lines: 0
       max-lines-per-function: off
+      max-lines: 0
       max-statements: 0
       no-magic-numbers: 0
       unicorn/no-unsafe-regex: off
