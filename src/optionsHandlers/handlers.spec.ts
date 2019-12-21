@@ -94,6 +94,7 @@ describe('handlers', (): void => {
         `[Error: the specified path does not exist]`,
       );
     }
+
     expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.scriptPath);
     expect(fileExistsAsyncSpy).toHaveBeenCalledTimes(1);
   });
