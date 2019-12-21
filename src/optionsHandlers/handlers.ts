@@ -39,5 +39,5 @@ export const handleScriptPathFlag = async (): Promise<string> => {
 
   return fileExists === true
     ? scriptPathInput
-    : Promise.reject(new Error('Path not exists'));
+    : Promise.reject(new Error('the specified path does not exist'));
 };

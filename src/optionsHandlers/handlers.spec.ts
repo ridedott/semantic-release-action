@@ -90,7 +90,9 @@ describe('handlers', (): void => {
     try {
       await handlers.handleScriptPathFlag();
     } catch (error) {
-      expect(error).toMatchInlineSnapshot(`[Error: Path not exists]`);
+      expect(error).toMatchInlineSnapshot(
+        `[Error: the specified path does not exist]`,
+      );
     }
     expect(getInputSpy).toHaveBeenCalledWith(handlers.Flags.scriptPath);
     expect(fileExistsAsyncSpy).toHaveBeenCalledTimes(1);
