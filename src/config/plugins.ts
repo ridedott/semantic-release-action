@@ -8,7 +8,9 @@ const generateExecPlugin = (
   return ['@semantic-release/exec', { prepareCmd: command }];
 };
 
-export const generatePlugins = (options: { command: string }): PluginSpec[] => {
+export const generatePlugins = (options: {
+  scriptPath: string;
+}): PluginSpec[] => {
   return [
     [
       '@semantic-release/commit-analyzer',
@@ -19,7 +21,7 @@ export const generatePlugins = (options: { command: string }): PluginSpec[] => {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     generateExecPlugin('npx prettier --write CHANGELOG.md'),
-    generateExecPlugin(options.command),
+    generateExecPlugin(options.scriptPath),
     '@semantic-release/npm',
     [
       '@semantic-release/git',

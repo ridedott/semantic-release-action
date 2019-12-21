@@ -32,7 +32,7 @@ const main = async (): Promise<void> => {
     ...handleDryRunFlag(),
     parserOpts: parserOptions,
     plugins: generatePlugins({
-      command: await handleScriptPathFlag(),
+      scriptPath: await handleScriptPathFlag(),
     }),
     releaseRules,
     writerOpts: { transform },
