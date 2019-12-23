@@ -20,7 +20,7 @@ inputs:
     description:
       'Boolean value expected. Outputs debug information for semantic-release
       plugins. If not provided, defaults to false.'
-  SCRIPTS_PATH:
+  SCRIPT_PATH:
     required: false
     description:
       'String value expected. Executes script with @semantic-release/exec
