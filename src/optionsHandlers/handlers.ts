@@ -10,7 +10,7 @@ export enum Flags {
   plugins = 'PLUGINS',
   scripts = 'SCRIPTS',
   debug = 'DEBUG',
-  scriptPath = 'SCRIPT_PATH',
+  scriptPath = 'SCRIPTS_PATH',
 }
 
 export const handleBranchFlag = (): { branch: string } | {} => {
@@ -39,5 +39,7 @@ export const handleScriptPathFlag = async (): Promise<string> => {
 
   return fileExists === true
     ? scriptPathInput
-    : Promise.reject(new Error('the specified path does not exist'));
+    : Promise.reject(
+        new Error('The file specified in SCRIPTS_PATH does not exist.'),
+      );
 };

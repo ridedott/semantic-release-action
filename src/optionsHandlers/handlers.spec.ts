@@ -91,7 +91,7 @@ describe('handlers', (): void => {
       await handlers.handleScriptPathFlag();
     } catch (error) {
       expect(error).toMatchInlineSnapshot(
-        `[Error: the specified path does not exist]`,
+        `[Error: The file specified in SCRIPTS_PATH does not exist.]`,
       );
     }
 

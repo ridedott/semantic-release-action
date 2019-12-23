@@ -29,7 +29,7 @@ Add a workflow file to your repository to create custom automated processes.
   and `success` steps. If not provided defaults to false.
 - DEBUG: [Optional] Boolean value expected. Outputs debug information for
   semantic-release plugins. If not provided, defaults to false.
-- SCRIPT_PATH: [Optional] String value expected. Executes script with
+- SCRIPTS_PATH: [Optional] String value expected. Executes script with
   @semantic-release/exec plugin. Script needs to be placed in "script" directory
   in a root of a repository with read and execute access.
 
