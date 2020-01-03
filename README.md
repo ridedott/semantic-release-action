@@ -12,7 +12,7 @@ Automatically releases new versions with
 ## Usage
 
 To start using the action, one needs to add a workflow file to a repository. For
-a quick start, see a simple example of a configuration file:
+a quick start, see a simple example:
 
 ```yaml
 # .github/workflows/continuous-delivery.yaml
@@ -42,14 +42,10 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
 
-For more advanced configuration and examples, please refer to the sections
-below.
+For more advanced configuration options and examples, please refer to the
+sections below.
 
-1. [Set environment variables.](#set-environment-variables).
-
-Add required
-
-### Set environment variables
+### Environment variables
 
 Environment variables are used to provide secrets to the action. Secrets can be
 set for a repository in the
@@ -81,13 +77,13 @@ npm and GitHub Packages.
 
 Inputs are used to configure the behavior of the action.
 
-- BRANCH: [Optional] Boolean value expected. Git branch to release from. If not
-  provided master branch will be used for release.
-- DRY_RUN: [Optional] String value expected. Dry-run skips `prepare`, `publish`
-  and `success` steps. If not provided defaults to false.
-- DEBUG: [Optional] Boolean value expected. Outputs debug information for
-  semantic-release plugins. If not provided, defaults to false.
-- SCRIPT_PATH: [Optional] String value expected. Executes script with
+- BRANCH: [Optional] A string value, git branch to release from. If it is not
+  provided, then the master branch is used for a release.
+- DRY_RUN: [Optional] A boolean value. Dry-run skips `prepare`, `publish` and
+  `success` steps. Defaults to false.
+- DEBUG: [Optional] A boolean value. Outputs debug information for
+  semantic-release plugins. Defaults to false.
+- SCRIPT_PATH: [Optional] A string value. Executes a script with
   @semantic-release/exec plugin. Scripts must have read and execute permissions.
 
 ## Examples
