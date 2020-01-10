@@ -59,7 +59,7 @@ export const runTask = async (task: Commands): Promise<void> => {
         @semantic-release/changelog \
         @semantic-release/commit-analyzer \
         @semantic-release/exec \
-        @semantic-release/git \
+        @semantic-release/git@7.0.18 \
         @semantic-release/npm \
         @semantic-release/release-notes-generator`);
     default:
