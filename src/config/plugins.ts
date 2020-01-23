@@ -25,7 +25,7 @@ export const generatePlugins = (options: {
     ...(options.scriptPath === undefined
       ? []
       : [generateExecPlugin(options.scriptPath)]),
-    options.publishToNpm ? '@semantic-release/npm' : '',
+    ...(options.publishToNpm === false ? [] : ['@semantic-release/npm']),
     [
       '@semantic-release/git',
       {
@@ -42,7 +42,5 @@ export const generatePlugins = (options: {
         successComment: false,
       },
     ],
-  ].filter(
-    (value: Array<any> | string): boolean => value.length > 0,
-  ) as PluginSpec[];
+  ] as PluginSpec[];
 };
